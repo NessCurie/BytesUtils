@@ -5,10 +5,7 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 
 /**
- * 模块:
  * 用途: byte的ArrayList,提供了方便的可以放入各种类型数据的方法
- * 作者: Created by NessCurie
- * 日期: 2018/8/28
  */
 public class ByteArrayList {
 

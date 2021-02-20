@@ -16,7 +16,7 @@ package com.github.bytesutils;
  * 而比如字符串是字符数组，字符是占1个字节，不需要进行大小端转换.
  * <p>
  * windows,linux,unix的字节序为小端 java则无论平台变化,都是大端
- * 实际使用中的大小端需要根据与终端通信的协议进行区分.比如:金龙和陕汽等大部分都为小端,北奔的为大端
+ * 实际使用中的大小端需要根据通信的协议进行区分.
  */
 public final class EndianUtils {
 
