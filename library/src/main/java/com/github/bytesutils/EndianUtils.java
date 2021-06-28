@@ -220,10 +220,10 @@ public final class EndianUtils {
             }
             s = s << 8;
         }
-        if (b[3] >= 0) {
-            s = s + b[3];
+        if (b[7] >= 0) {
+            s = s + b[7];
         } else {
-            s = s + 256 + b[3];
+            s = s + 256 + b[7];
         }
         return s;
     }
