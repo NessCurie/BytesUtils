@@ -1,15 +1,11 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.github.nesscurie'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0.0.0"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -17,20 +13,30 @@ android {
     }
 }
 dependencies {
-    fileTree(dir: 'libs', include: ['*.jar'])
+
 }
 
-// 指定编码
+apply plugin: 'maven-publish'
+
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
-// 打包源码
-task sourcesJar(type: Jar) {
+task sourcesJar(type: Jar) {  // 打包源码
     from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+    getArchiveClassifier().set('sources')
 }
 
-artifacts {
-    archives sourcesJar
+afterEvaluate {
+    publishing {
+        publications {
+            upload(MavenPublication) {
+                from components.release
+                groupId = 'com.github.nesscurie'
+                artifactId = "BytesUtils"
+                version = "1.1"
+                artifact sourcesJar
+            }
+        }
+    }
 }
